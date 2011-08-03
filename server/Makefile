@@ -28,8 +28,8 @@ endif
 
 GKRELLMD_INCLUDES = gkrellmd.h $(SHARED_PATH)/log.h
 
-PKG_INCLUDE := $(shell $(PKG_CONFIG) --cflags glib-2.0 gmodule-2.0 gthread-2.0)
-PKG_LIB := $(shell $(PKG_CONFIG) --libs glib-2.0 gmodule-2.0 gthread-2.0)
+PKG_INCLUDE := $(shell $(PKG_CONFIG) --cflags glib-2.0 gio-2.0 gmodule-2.0 gthread-2.0)
+PKG_LIB := $(shell $(PKG_CONFIG) --libs glib-2.0 gio-2.0 gmodule-2.0 gthread-2.0)
 
 FLAGS = -O2 $(PKG_INCLUDE)
 
@@ -69,7 +69,7 @@ endif
 
 OS_RELEASE=$(shell uname -r)
 
-OBJS = main.o monitor.o mail.o plugins.o utils.o sysdeps-unix.o log.o
+OBJS = main.o monitor.o mail.o plugins.o utils.o sysdeps-unix.o log.o client.o serversocket.o
 
 all:	gkrellmd$(BINEXT)
 
