@@ -161,6 +161,8 @@ typedef struct _GkrellmdClient
 	GSource *read_source;
 	GkrellmdClientReadFunc read_func;
 	gpointer read_func_user_data;
+	GString	*write_buf;
+	GSource	*write_source;
 	}
 	GkrellmdClient;
 
