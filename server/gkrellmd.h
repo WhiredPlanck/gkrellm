@@ -139,6 +139,8 @@ GKRELLMD_VERSION_REV >= (rev)))
 
 typedef struct _GkrellmdClient GkrellmdClient;
 
+typedef void (*GkrellmdClientFunc)(GkrellmdClient *client, gpointer user_data);
+
 typedef void (*GkrellmdClientReadFunc)(GkrellmdClient *client, GString *str,
 		gpointer user_data);
 
@@ -163,6 +165,8 @@ typedef struct _GkrellmdClient
 	gpointer read_func_user_data;
 	GString	*write_buf;
 	GSource	*write_source;
+	GkrellmdClientFunc close_func;
+	gpointer close_func_user_data;
 	}
 	GkrellmdClient;
 
