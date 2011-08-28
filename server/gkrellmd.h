@@ -144,6 +144,9 @@ typedef void (*GkrellmdClientFunc)(GkrellmdClient *client, gpointer user_data);
 typedef void (*GkrellmdClientReadFunc)(GkrellmdClient *client, GString *str,
 		gpointer user_data);
 
+typedef void (*GkrellmdClientResolveFunc)(GkrellmdClient *client,
+		gboolean success, gpointer user_data);
+
 typedef struct _GkrellmdClient
 	{
 	gint		major_version,
@@ -167,6 +170,9 @@ typedef struct _GkrellmdClient
 	GSource	*write_source;
 	GkrellmdClientFunc close_func;
 	gpointer close_func_user_data;
+	GkrellmdClientResolveFunc resolve_func;
+	gpointer resolve_func_user_data;
+	gchar *hostname_tmp;
 	gsize ref_count;
 	}
 	GkrellmdClient;
